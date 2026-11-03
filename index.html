@@ -145,6 +145,25 @@
         </div>
       </div>
     </article>
+
+    <article class="project">
+      <div class="shot"><img src="assets/nmf-thumb.png" alt="Soporte de los átomos: ceros parciales con ℓ1 frente a ceros conjuntos con ℓ∞ + VNS"></div>
+      <div>
+        <div class="kicker">Investigación · Trabajo Fin de Máster</div>
+        <h3>NMF dispersa conjunta ℓ∞ para imágenes en color</h3>
+        <p>Factorización no negativa que penaliza el máximo entre canales RGB para que los ceros sean conjuntos en los tres canales. Soporte optimizado con Greedy y con VNS (Variable Neighbourhood Search), evaluado con una métrica propia: la JZR (Joint Zero Rate).</p>
+        <ul>
+          <li>El 86 % de los ceros son conjuntos, frente al 51 % con ℓ1</li>
+          <li>VNS mejora a Greedy: ε<sub>F</sub> 3,79 % → 3,37 %, SSIM 0,944 → 0,958</li>
+          <li>Basado en mi TFM «Técnicas de Reducción de la Dimensionalidad. Aplicaciones a Imágenes»</li>
+        </ul>
+        <div class="chips"><span class="chip">Python</span><span class="chip">NumPy</span><span class="chip">NMF</span><span class="chip">Metaheurísticas</span><span class="chip">Optimización</span></div>
+        <div class="plinks">
+          <a href="projects/sparse-nmf-color/reports/report.html">Ver informe →</a>
+          <a class="code" data-path="projects/sparse-nmf-color" href="#">Código</a>
+        </div>
+      </div>
+    </article>
   </div>
 </div></section>
 
@@ -153,7 +172,7 @@
   <p class="sec-sub">Herramientas con las que trabajo a diario.</p>
   <div class="skills">
     <div class="skill"><b>Programación</b><span>Python (pandas, NumPy, SciPy, scikit-learn), SQL, R, VBA</span></div>
-    <div class="skill"><b>Estadística</b><span>Inferencia frecuentista y bayesiana, tests A/B, ANOVA, bootstrap, PCA/NMF</span></div>
+    <div class="skill"><b>Estadística</b><span>Inferencia frecuentista y bayesiana, tests A/B, ANOVA, bootstrap, PCA/NMF, metaheurísticas (VNS)</span></div>
     <div class="skill"><b>Datos</b><span>Procesos ETL, calidad de datos, automatización de flujos, reporting</span></div>
     <div class="skill"><b>Visualización y BI</b><span>Power BI, Tableau, Qlik Sense, Excel, matplotlib</span></div>
   </div>
