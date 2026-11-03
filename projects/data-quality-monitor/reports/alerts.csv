@@ -1,0 +1,9 @@
+day,check,severity,value,expected,message
+2026-05-10,duplicados,alta,344.0,0,344 order_id duplicados
+2026-05-10,volumen,alta,706.0,≈354,"Pico de volumen: 706 filas (+99 % vs. línea base, z=18.2)"
+2026-06-04,volumen,alta,175.0,≈467,"Caída de volumen: 175 filas (-63 % vs. línea base, z=-12.3)"
+2026-06-09,nulos,media,0.319,≤ 2%,31.9% de customer_id nulos
+2026-06-10,nulos,media,0.2989,≤ 2%,29.9% de customer_id nulos
+2026-06-11,nulos,media,0.2791,≤ 2%,27.9% de customer_id nulos
+2026-06-17,rango,media,25.0,0,"25 importes fuera de [0, 5000] €"
+2026-06-28,frescura,alta,2.0,≤ 1 día(s),Último dato cargado: 2026-06-26 (2 días de retraso)

@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Test A/B · nuevo checkout</title><style>
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:#1f2a44;max-width:860px;margin:40px auto;padding:0 20px;line-height:1.6}
+h1{font-size:26px;margin:0}h2{font-size:17px;margin-top:36px;border-bottom:1px solid #e5e7eb;padding-bottom:6px}
+.sub{color:#6b7280}.kpis{display:flex;gap:12px;margin:22px 0;flex-wrap:wrap}
+.kpi{flex:1;min-width:150px;border:1px solid #e5e7eb;border-radius:10px;padding:12px 14px}
+.kpi b{display:block;font-size:20px;white-space:nowrap}.kpi span{color:#6b7280;font-size:13px}
+.verdict{background:#eef3fa;border-left:4px solid #1f3a5f;padding:14px 18px;border-radius:6px;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14px}th,td{text-align:left;padding:7px 8px;border-bottom:1px solid #eef0f3}
+th{color:#6b7280;font-weight:600}img{width:100%;max-width:640px;display:block;margin:10px 0}
+footer{color:#9ca3af;font-size:12px;margin:40px 0}
+</style></head><body>
+<h1>Test A/B: rediseño del checkout</h1>
+<div class="sub">25.000 usuarios asignados al azar 50/50 · métrica principal: conversión · secundaria: ingreso por usuario</div>
+<div class="kpis"><div class='kpi'><b>8,23 % → 8,96 %</b><span>Conversión A → B</span></div><div class='kpi'><b>+8,8 %</b><span>Lift relativo</span></div><div class='kpi'><b>0,040</b><span>p-valor (z-test)</span></div><div class='kpi'><b>98,0 %</b><span>P(B > A) bayesiana</span></div></div>
+<div class="verdict"><b>Recomendación:</b> lanzar el nuevo checkout. La conversión sube +0,73 p.p. (IC 95 % [+0,03 p.p., +1,42 p.p.]),
+la probabilidad posterior de que B sea mejor es 98,0 % y la pérdida esperada de elegir B es casi nula
+(0,003 p.p.). El efecto se concentra en <b>móvil</b>. El impacto en ingreso por usuario
+<b>todavía no es concluyente</b> (p = 0,86), así que conviene seguir midiéndolo tras el lanzamiento.</div>
+
+<h2>1. Diseño y validez</h2>
+<p>Con una conversión base del 8 % y un efecto mínimo de interés de +1 p.p. (α = 5 %, potencia 80 %)
+se necesitan <b>12.208 usuarios por grupo</b>. El experimento alcanzó 12.429 (A) y 12.571 (B).
+El test de <i>Sample Ratio Mismatch</i> (χ²) da p = 0,37: la asignación es coherente con 50/50, sin indicios de fallos de randomización.</p>
+<img src="figures/power_curve.png" alt="Curvas de potencia">
+
+<h2>2. Conversión: enfoque frecuentista</h2>
+<p>z-test de dos proporciones: diferencia +0,73 p.p., IC 95 % [+0,03 p.p., +1,42 p.p.], z = 2,05, p = 0,040.
+Significativo al 5 %, aunque el límite inferior del intervalo está cerca de 0: el efecto es real pero su tamaño es incierto.</p>
+
+<h2>3. Conversión: enfoque bayesiano</h2>
+<p>Modelo Beta-Binomial con prior uniforme Beta(1,1). P(B &gt; A) = <b>98,0 %</b>; IC creíble 95 % del lift relativo
+[+0,4 %, +18,0 %]. Pérdida esperada eligiendo B: 0,003 p.p.;
+eligiendo A: 0,728 p.p. La pérdida esperada es más útil para negocio que el p-valor porque mide cuánto se arriesga con cada decisión.</p>
+<img src="figures/posterior.png" alt="Posteriores">
+
+<h2>4. Ingreso por usuario</h2>
+<p>El ingreso tiene muchos ceros y una cola larga, así que la t de Welch se complementa con un IC bootstrap (4.000 remuestreos).
+Media A 5,43 € vs B 5,48 €; diferencia 0,05 €, IC bootstrap
+[-0,51, 0,64] €, p (Welch) = 0,86. <b>No concluyente</b>:
+el intervalo es compatible tanto con pérdidas como con ganancias. Con la varianza del ticket, detectar +1 % en ingreso exigiría muchos más usuarios.</p>
+<img src="figures/revenue_bootstrap.png" alt="Bootstrap ingreso">
+
+<h2>5. Segmentos (corrección de Holm)</h2>
+<p>Al mirar varios segmentos aumenta la probabilidad de encontrar un falso positivo, así que los p-valores se ajustan con Holm-Bonferroni.</p>
+<table><thead><tr><th>Segmento</th><th>Usuarios</th><th>A</th><th>B</th><th>Dif.</th><th>IC 95 %</th><th>p</th><th>p Holm</th></tr></thead><tbody><tr><td>Escritorio</td><td>9.306</td><td>9,24 %</td><td>9,39 %</td><td>+0,15 p.p.</td><td>[-1,03 p.p., +1,34 p.p.]</td><td>0,798</td><td><b>0,798</b></td></tr><tr><td>Móvil</td><td>15.694</td><td>7,63 %</td><td>8,70 %</td><td>+1,07 p.p.</td><td>[+0,22 p.p., +1,93 p.p.]</td><td>0,014</td><td><b>0,028</b></td></tr></tbody></table>
+<p>En <b>móvil</b> el efecto es +1,07 p.p. y sigue siendo significativo tras el ajuste (p Holm = 0,028). En escritorio
+(+0,15 p.p.) no se distingue de cero. Hipótesis: el rediseño reduce fricción sobre todo en pantallas pequeñas.</p>
+<img src="figures/segments.png" alt="Segmentos">
+
+<h2>6. Por qué no mirar el test cada día (<i>peeking</i>)</h2>
+<p>Simulación de 2.000 tests A/A (sin efecto real). Con un único análisis al final, la tasa de falsos positivos es
+4,7 %, como se espera. Si se revisa el p-valor en 20 momentos y se para en cuanto p &lt; 0,05, sube a
+<b>24,2 %</b>. Por eso este experimento se analizó una sola vez, con el tamaño muestral fijado de antemano.
+Si se quiere monitorizar durante el test, hay que usar métodos secuenciales (por ejemplo, O'Brien-Fleming).</p>
+<img src="figures/peeking.png" alt="Peeking">
+<footer>Datos sintéticos generados con <code>abtest/simulate.py</code> · Salma Allioui</footer>
+</body></html>

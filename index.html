@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Salma Allioui · Ingeniera de Datos</title>
+<meta name="description" content="Portafolio de Salma Allioui: ingeniera estadística y analista de datos. SQL, Python, calidad de datos, tests A/B.">
+<style>
+  :root{
+    --ink:#1f2a44; --muted:#5f6b7d; --line:#e6e8ee; --bg:#fbfaf7; --card:#ffffff;
+    --navy:#1f3a5f; --accent:#c2410c; --chip:#eef2f7;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
+  a{color:var(--navy)}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+  nav{position:sticky;top:0;background:rgba(251,250,247,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:5}
+  nav .wrap{display:flex;justify-content:space-between;align-items:center;height:58px}
+  nav .logo{font-weight:700;letter-spacing:-.01em;text-decoration:none;color:var(--ink)}
+  nav .links a{margin-left:22px;text-decoration:none;color:var(--muted);font-size:14.5px}
+  nav .links a:hover{color:var(--ink)}
+
+  header{padding:88px 0 64px}
+  .eyebrow{font-size:13px;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);font-weight:600}
+  h1{font-size:clamp(38px,6vw,62px);line-height:1.05;letter-spacing:-.03em;margin:14px 0 18px}
+  h1 span{color:var(--navy)}
+  .lead{font-size:19px;color:var(--muted);max-width:640px;margin:0 0 30px}
+  .btns{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:9px;text-decoration:none;font-weight:600;font-size:15px;border:1px solid var(--navy)}
+  .btn.primary{background:var(--navy);color:#fff}
+  .btn.ghost{color:var(--navy);background:transparent}
+  .btn:hover{transform:translateY(-1px)}
+  .facts{display:flex;gap:34px;margin-top:46px;flex-wrap:wrap}
+  .facts div b{display:block;font-size:15px}
+  .facts div span{color:var(--muted);font-size:14px}
+
+  section{padding:64px 0;border-top:1px solid var(--line)}
+  h2{font-size:28px;letter-spacing:-.02em;margin:0 0 6px}
+  .sec-sub{color:var(--muted);margin:0 0 34px}
+
+  .project{display:grid;grid-template-columns:1.05fr 1fr;gap:36px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:30px;margin-bottom:26px}
+  .project:nth-child(even) .shot{order:2}
+  .shot{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px;overflow:hidden}
+  .shot img{width:100%;display:block}
+  .project h3{font-size:22px;margin:4px 0 10px;letter-spacing:-.01em}
+  .kicker{font-size:12.5px;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.1em}
+  .project p{color:var(--muted);margin:0 0 14px}
+  .project ul{margin:0 0 16px;padding-left:18px;color:var(--ink)}
+  .project li{margin:4px 0;font-size:15px}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+  .chip{background:var(--chip);color:var(--navy);font-size:12.5px;padding:4px 10px;border-radius:99px;font-weight:500}
+  .plinks a{margin-right:18px;font-weight:600;font-size:15px}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .item{padding:18px 0;border-bottom:1px solid var(--line)}
+  .item:last-child{border-bottom:none}
+  .item .top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .item b{font-size:16px}
+  .item .when{color:var(--muted);font-size:14px;white-space:nowrap}
+  .item .where{color:var(--muted);font-size:14.5px}
+  .item p{margin:6px 0 0;font-size:15px}
+  h4{font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:0 0 6px}
+
+  .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+  .skill{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+  .skill b{display:block;margin-bottom:8px}
+  .skill span{color:var(--muted);font-size:14.5px}
+
+  .contact{text-align:center;padding:80px 0}
+  .contact h2{font-size:32px}
+  .contact p{color:var(--muted);margin:8px 0 26px}
+  footer{color:#9aa1ad;font-size:13px;text-align:center;padding:26px 0 40px}
+
+  @media (max-width:820px){
+    .project,.grid2{grid-template-columns:1fr}
+    .project:nth-child(even) .shot{order:0}
+    nav .links a:not(:last-child){display:none}
+    header{padding:56px 0 44px}
+  }
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="logo" href="#">Salma Allioui</a>
+  <div class="links">
+    <a href="#proyectos">Proyectos</a><a href="#habilidades">Habilidades</a><a href="#contacto">Contacto</a>
+  </div>
+</div></nav>
+
+<header><div class="wrap">
+  <div class="eyebrow">Ingeniera de Datos</div>
+  <h1>Convierto datos en <span>decisiones fiables</span>.</h1>
+  <p class="lead">Ingeniera estadística especializada en datos: reporting, procesos ETL, calidad de datos y automatización con SQL y Python. Me interesa que los números sean correctos antes de que alguien decida con ellos.</p>
+  <div class="btns">
+    <a class="btn primary" href="#proyectos">Ver proyectos</a>
+    <a class="btn ghost" href="https://www.linkedin.com/in/salma-allioui-845a72190/" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn ghost" href="https://github.com/salmaallioui" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <div class="facts">
+    <div><b>Sevilla, España</b><span>Francés C1 · Inglés C1 · Español B2</span></div>
+  </div>
+</div></header>
+
+<section id="proyectos"><div class="wrap">
+  <h2>Proyectos</h2>
+  <p class="sec-sub">Código completo, tests e informes reproducibles. Datos sintéticos.</p>
+
+  <div class="projects">
+    <article class="project">
+      <div class="shot"><img src="assets/dq-thumb.png" alt="Gráfico de volumen diario con alertas detectadas"></div>
+      <div>
+        <div class="kicker">Ingeniería y calidad de datos</div>
+        <h3>Monitor de calidad de datos</h3>
+        <p>Checks automáticos sobre una tabla de pedidos: perfilado con SQL, detección de anomalías con estadística robusta e informe HTML con alertas. Devuelve un código de error si hay alertas graves, para bloquear cargas defectuosas en un pipeline.</p>
+        <ul>
+          <li>Volumen: z-score robusto (mediana/MAD) contra el mismo día de la semana</li>
+          <li>Duplicados, nulos, rangos y frescura de los datos</li>
+          <li>Detecta las 6 anomalías inyectadas <b>sin falsos positivos</b></li>
+        </ul>
+        <div class="chips"><span class="chip">SQL</span><span class="chip">Python</span><span class="chip">SQLite</span><span class="chip">pandas</span><span class="chip">pytest</span></div>
+        <div class="plinks">
+          <a href="projects/data-quality-monitor/reports/report.html">Ver informe →</a>
+          <a class="code" data-path="projects/data-quality-monitor" href="#">Código</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="shot"><img src="assets/ab-thumb.png" alt="Distribuciones posteriores de la conversión de A y B"></div>
+      <div>
+        <div class="kicker">Estadística aplicada</div>
+        <h3>Análisis de un test A/B</h3>
+        <p>Experimento de rediseño del checkout con 25.000 usuarios, analizado de principio a fin: tamaño muestral, validez, inferencia frecuentista y bayesiana, segmentos y recomendación de negocio.</p>
+        <ul>
+          <li>Conversión +0,73 p.p. (p = 0,040) · P(B&nbsp;&gt;&nbsp;A) = 98 %</li>
+          <li>Bootstrap para el ingreso, Holm-Bonferroni para segmentos</li>
+          <li>Simulación: mirar el test 20 veces eleva los falsos positivos del 5 % al 24 %</li>
+        </ul>
+        <div class="chips"><span class="chip">Python</span><span class="chip">SciPy</span><span class="chip">Inferencia bayesiana</span><span class="chip">Bootstrap</span><span class="chip">pytest</span></div>
+        <div class="plinks">
+          <a href="projects/ab-test-analysis/reports/report.html">Ver informe →</a>
+          <a class="code" data-path="projects/ab-test-analysis" href="#">Código</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</div></section>
+
+<section id="habilidades"><div class="wrap">
+  <h2>Habilidades</h2>
+  <p class="sec-sub">Herramientas con las que trabajo a diario.</p>
+  <div class="skills">
+    <div class="skill"><b>Programación</b><span>Python (pandas, NumPy, SciPy, scikit-learn), SQL, R, VBA</span></div>
+    <div class="skill"><b>Estadística</b><span>Inferencia frecuentista y bayesiana, tests A/B, ANOVA, bootstrap, PCA/NMF</span></div>
+    <div class="skill"><b>Datos</b><span>Procesos ETL, calidad de datos, automatización de flujos, reporting</span></div>
+    <div class="skill"><b>Visualización y BI</b><span>Power BI, Tableau, Qlik Sense, Excel, matplotlib</span></div>
+  </div>
+</div></section>
+
+<section id="contacto" class="contact"><div class="wrap">
+  <h2>¿Hablamos?</h2>
+  <p>Abierta a oportunidades en análisis de datos, ingeniería de datos y estadística.</p>
+  <div class="btns" style="justify-content:center">
+    <a class="btn primary" href="mailto:salma01allioui2002@gmail.com">salma01allioui2002@gmail.com</a>
+    <a class="btn ghost" href="https://www.linkedin.com/in/salma-allioui-845a72190/" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn ghost" href="https://github.com/salmaallioui" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</div></section>
+
+<footer>© 2026 Salma Allioui</footer>
+
+<script>
+  // En GitHub Pages (usuario.github.io/repo) los enlaces "Código" apuntan solos al repositorio.
+  (function () {
+    var m = location.hostname.match(/^([^.]+)\.github\.io$/);
+    document.querySelectorAll("a.code").forEach(function (a) {
+      if (!m) { a.href = "https://github.com/salmaallioui/salmaallioui.github.io/tree/main/" + a.dataset.path; a.target = "_blank"; return; }
+      var user = m[1];
+      var seg = location.pathname.split("/").filter(Boolean)[0];
+      var repo = (seg && seg.indexOf(".") === -1) ? seg : (user + ".github.io");
+      a.href = "https://github.com/" + user + "/" + repo + "/tree/main/" + a.dataset.path;
+      a.target = "_blank"; a.rel = "noopener";
+    });
+  })();
+</script>
+</body>
+</html>
