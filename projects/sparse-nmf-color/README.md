@@ -42,4 +42,4 @@ pytest              # 6 tests: JZR, gradiente de la penalización, convergencia,
 
 **Stack:** Python · NumPy · SciPy · matplotlib · pytest
 
-*Es una reimplementación limpia hecha para el portafolio, con datos sintéticos (zonas de color con transiciones gaussianas). Las cifras corresponden a este experimento, no a las del TFM.*
+*Es una reimplementación  con datos sintéticos (zonas de color con transiciones gaussianas). Las cifras corresponden a este experimento, no a las del TFM.*
